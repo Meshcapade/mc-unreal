@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.2.0",
+	"FriendlyName": "Meshcapade",
+	"Description": "Meshcapade runtime tools and editor content",
+	"Category": "Meshcapade",
+	"CreatedBy": "Meshcapade",
+	"CreatedByURL": "https://meshcapade.com/",
+	"DocsURL": "https://meshcapade.com/",
+	"MarketplaceURL": "https://meshcapade.com/",
+	"SupportURL": "https://meshcapade.com/",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Meshcapade",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
