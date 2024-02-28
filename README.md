@@ -152,7 +152,7 @@ Right click on parent top node of your animation in the track panel and choose `
 
 Note: the animation will only bake what's between the red and green markers on the timeline.  If you want to trim the animation, you can do it by moving the markers.
 
-![anim editing0](images/readme_animediting.gif)
+![anim editing0](images/readme_animediting0.gif)
 
 Select the new control rig layer on the track and right click and choose `Add Section` > `Additive`.  This will allow you to add animation on top of the existing animation.
 
