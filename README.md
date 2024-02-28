@@ -148,9 +148,20 @@ Now that you have a control rig that works with your character, you can bake the
 
 Click the `+` to the right of `Animation` and add your animation asset.
 
-Right click on parent top node of your animation in the track panel and choose `Bake to Control Rig` > `<your control rig>`
+Right click on parent top node of your animation in the track panel and choose `Bake to Control Rig` > `<your control rig>`.  Click `Create`.
 
-Note: the animation baking will happen in between the red and green markers on the timeline, so make sure that the animation you're interested in is in between them.
+Note: the animation will only bake what's between the red and green markers on the timeline.  If you want to trim the animation, you can do it by moving the markers.
 
-![anim editing](images/readme_animediting.gif).
+![anim editing0](images/readme_animediting.gif)
 
+Select the new control rig layer on the track and right click and choose `Add Section` > `Additive`.  This will allow you to add animation on top of the existing animation.
+
+![anim editing1](images/readme_animediting00.png)
+
+At this point, you can spend as little or as much time as you'd like to make the animation do what you want to do. In the example below, I tweak the height of the global control so that the character doesn't clip the ground as much as he bends forward.  You could then fix the hands and fingers or add cartoony motion.
+
+![anim editing1](images/readme_animediting1.gif)
+
+Once you're happy with your animation, the last step is to bake it.  Right click on the top node in the track panel and choose `Bake Animation Sequence` and save it.  Now your edited animation can be used as normal.
+
+![anim editing1](images/readme_animediting01.png)
