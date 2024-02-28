@@ -1,10 +1,12 @@
 # Meshcapade Unreal Suite
 
-## I. download the unreal plugin and add it to your unreal project
+## I. Adding the Plugin To your Unreal Project
 
-link to plugin location on our web page
+[Download](https://codeload.github.com/Meshcapade/mc-unreal/zip/refs/tags/v0.0.1) the Unreal Plugin or grab from our git repo(https://github.com/Meshcapade/mc-unreal).
 
-download the plugin, unzip it (it will have /Plugin/ as the top folder), and then drop the contents into your unreal project.  Launch unreal, make sure it’s there. 
+Make sure your Unreal project is closed.  Drop the Plugins folder into the top level of your Unreal project.
+
+![plugins](images/readme_plugins.gif)
 
 ## II. Download an animated fbx from Meshcapade.me
 
