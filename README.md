@@ -1,11 +1,16 @@
 # Meshcapade Unreal Plugin
 
-<span style="color:magenta">TODO: Change the "Go to GitHub Repository" to just "GitHub" with the octocat icon</span>
+<span style="color:magenta">TODO: Change the "Go to GitHub Repository" to just "GitHub" with the octocat icon @gabriele</span>
 <br/>
-<span style="color:magenta">TODO: add a no C++ version of the plugin</span>
+<span style="color:magenta">TODO: add a no C++ version of the plugin to git @nathan </span>
 <br/>
-<span style="color:magenta">TODO: make all sections collapsable</span>
-
+<span style="color:magenta">TODO: @simay/@gabriele figure out the buttons for two plugins FE</span>
+<br/>
+<span style="color:magenta">TODO: make all sections collapsable @gabriele</span>
+<br/>
+<span style="color:magenta">TODO: convert all .gifs to video and send them to nathan @gabriele</span>
+<br/>
+<span style="color:magenta">TODO: put them on youtube and link them @nathan</span>
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://meshcapade.me/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download).
 
@@ -173,3 +178,43 @@ To enable pose correctives on a Meshcapade body, all you need to do is add a ske
 The example below has two bodies overlaying each other to further illustrate the result.  The orange body doesn't have pose correctives, and the textured body does. 
 
 ![pose corrective example](images/readme_posecorrectiveexample.gif)
+
+
+<details>
+<summary><h2>VIII. Collapsable fake section<h2></summary>
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+</details>
+
+
+<details>
+<summary>IX. Collapsable fake section take two</summary>
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+words more words
+
+</details>
