@@ -1,19 +1,28 @@
 # Meshcapade Unreal Plugin
 
+<span style="color:magenta">TODO: Change the "Go to GitHub Repository" to just "GitHub" with the octocat icon</span>
+<br/>
+<span style="color:magenta">TODO: add a no C++ version of the plugin</span>
+<br/>
+<span style="color:magenta">TODO: make all sections collapsable</span>
+
+
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://meshcapade.me/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download).
 
 ## I. Adding the Plugin To your Unreal Project
 
 [Download](https://codeload.github.com/Meshcapade/mc-unreal/zip/refs/tags/v0.0.1) the Unreal Plugin or grab from our [git repo](https://github.com/Meshcapade/mc-unreal).
 
-Make sure your Unreal project is closed.  Unzip it and drop the Plugins folder into the top level of your Unreal project.
+Make sure your Unreal project is closed.  Unzip the plugin and drop the `Plugins` folder into the top level of your Unreal project.
 
 ![adding plugins to unreal project](images/readme_plugins.gif)
 
 ## II. Download an Animated .FBX from [Meshcapade.me](https://meshcapade.me/)
 Currently, there are two ways to get animations from [Meshcapade.me](https://meshcapade.me/): 
 - [Motion From Video](https://me.meshcapade.com/from-videos) - Extract the human motion from a video.
-- [Motion from Text](https://me.meshcapade.com/editor) - Find a human motion in our library of 10,000 (made that number up) motions.  
+
+<span style="color:yellow">do we want this tidbit about how many animations? I just made up 10,000</span></br>
+- [Motion from Text](https://me.meshcapade.com/editor) - Find a human motion in our library of 10,000 motions.  
 ### A. [Motion From Video](https://me.meshcapade.com/from-videos)
 To get an animation from a video, visit 
 https://me.meshcapade.com/from-videos.  Follow the prompts until you've created an animated avatar.
@@ -23,7 +32,7 @@ https://me.meshcapade.com/from-videos.  Follow the prompts until you've created 
 ### B. [Motion from Text](https://me.meshcapade.com/editor)
 To search for a motion from our motion library, visit https://me.meshcapade.com/editor. In the top right, there is a search box where you can search for an animation.  Once you've found the animation you want, save the avatar into your vault.
 
-<span style="color:yellow">TODO update this image when possible</span>
+<span style="color:magenta">TODO: update this image when possible</span>
 
 ![from text](images/readme_tmr00.png)
 
@@ -32,7 +41,7 @@ To search for a motion from our motion library, visit https://me.meshcapade.com/
 ## III. download the fbx
 Go to your [avatar vault](https://me.meshcapade.com/vault), and click the `...` on the top right corner of the avatar containing the motion you'd like to download.  In the download options, make sure that `file format` is `fbx` (`obj` has no motion) and `Pose/Motion` is `Captured Motion`.  For `compatibility mode`, select `Unreal` if you are interested in using the Meshcapade body with pose correctives.  Choose `Unreal - no blend shapes` if you're only interested in the motion, this will make the import process faster.  Choose `Unreal` if you're following the [Advanced Features](#vii-advanced-features) workflow.
 
-<span style="color:yellow">TODO update this image when possible</span>
+<span style="color:magenta">TODO: update this image when possible</span>
 
 ![download](images/readme_download00.png)
 
@@ -138,33 +147,29 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 
 ![anim editing1](images/readme_animediting01.png)
 
-
 ## VII. Advanced Features
-If you 
+There is a version of the plugin that allows for real time calculation of pose based deformations to Meshcapade bodies, and it's extremely easy to apply to actor blueprints.  "Pose Correctives" are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
+
+![pose correctives](images/readme_posecorrectives0.gif)
+
 ### A. Configuring Unreal to Build custom C++ code
-The Meshcapade Unreal plugin uses custom C++ code that needs to be compiled.
+Unreal compiles the entire project every time it loads.  We need to add an additional compiler to Unreal, so that it can additionally compile our C++ code at startup.
 
 Download and install [Visual Studio Community 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030).
 
-In the install options, check `Game Development with C++` and inside that, check `Unreal Engine Installer`
+In the install options, check `Game Development with C++` and inside that, check `Unreal Engine Installer`. Also install `.NET Desktop Development`.  
 
 ![visual studio UEI](images/readme_vs00.png)
 
-Also install `.NET Desktop Development`
+After installing, when you launch the Unreal project, it will compile the C++ code as part of the startup process.  There's nothing else you need to do. 
 
-![.NET](images/readme_vs01.png)
+### B. Adding Pose Correctives to Meshcapade Bodies
+In the [import step](#v-import-the-fbx-into-unreal), make sure you enable `Import Morph Targets`. 
 
-After installing, when you launch the Unreal project, it will compile the C++ code as part of the launch process. 
+To enable pose correctives on a Meshcapade body, all you need to do is add a skeletal mesh component to a blueprint actor and then add the `Pose Correctives` actor component to the same blueprint.  That's it.
 
-## VII. Adding Pose Correctives to Meshcapade Bodies
-If you're only interested in using the Meshcapade body, they come with an additional perk of having pose corrective blend shapes baked into the .fbx, if you imported morph targets on the [import step](#v-import-the-fbx-into-unreal). 
+![add pose correctives](images/readme_posecorrectives1.gif)
 
-This plugin comes with special code for actors containing Meshcapade bodies, where the mesh has corrective blend shapes applied to the mesh, based on what pose the character is in.
-
-All you need to do is add a skeletal mesh component to a blueprint actor and then add the `Pose Correctives` actor component to the same blueprint and you're done.
-
-![add pose correctives](images/readme_posecorrectives.gif)
-
-Below is an example where two bodies are overlaid to illustrate what pose correctives are.  The orange body is the body without pose correctives, and the textured body has pose correctives.  Note how the mesh is corrected based on the pose. 
+The example below has two bodies overlaying each other to further illustrate the result.  The orange body doesn't have pose correctives, and the textured body does. 
 
 ![pose corrective example](images/readme_posecorrectiveexample.gif)
