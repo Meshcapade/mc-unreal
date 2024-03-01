@@ -105,7 +105,7 @@ Select the retargeter you'd like to use
 
 Here's an example of the retargeted animation next to the original animation
 
-![retarget example](images/readme_retargetingexample.gif)
+![retarget example](https://youtu.be/dDYhbGmUmCA)
 
 ## VI. Editing animation
 
@@ -136,7 +136,7 @@ Right-click on the top node of your animation in the track panel and choose `Bak
 
 Note: the animation will only bake what's between the red and green markers on the timeline.  If you want to trim the animation, you can do it by moving the markers.
 
-![anim editing0](images/readme_animediting0.gif)
+![anim editing0](https://youtu.be/FoIkByz4ePU)
 
 Select the new control rig layer on the track and right-click and choose `Add Section` > `Additive`.  This will allow you to add animation on top of the existing animation.
 
@@ -144,7 +144,7 @@ Select the new control rig layer on the track and right-click and choose `Add Se
 
 At this point, you can spend as little or as much time as you'd like to make the animation do what you want to do. In the example below, I tweak the height of the global control so that the character doesn't clip the ground as much as he bends forward.  You could then fix the hands and fingers or add cartoony motion.
 
-![anim editing1](images/readme_animediting1.gif)
+![anim editing1](https://youtu.be/tRF8h6V9KIw)
 
 Once you're happy with your animation, the last step is to bake it.  Right-click on the top node in the track panel and choose `Bake Animation Sequence` and save it.  Now your edited animation can be used as normal.
 
@@ -153,17 +153,17 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 ## VII. Pose correctives
 Pose correctives allow for real time calculation of pose based deformations to SMPL-bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
 
-![pose correctives](images/readme_posecorrectives0.gif)
+![pose correctives](https://youtu.be/CxJnpEXfjG0)
 
 In order to be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#v-import-the-fbx-into-unreal) when you import a SMPL-body. 
 
 To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a SMPL-body, then add the `Pose Correctives` actor component to the same blueprint.
 
-![add pose correctives](images/readme_posecorrectives1.gif)
+![add pose correctives](https://youtu.be/ZKWhLW5n00c)
 
 The example below has two bodies overlaying each other to further illustrate the result.  The orange body doesn't have pose correctives, and the textured body does. 
 
-![pose corrective example](images/readme_posecorrectiveexample.gif)
+![pose corrective example](https://youtu.be/3F3ReRXnuV4)
 
 
 <details>
