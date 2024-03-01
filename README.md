@@ -42,7 +42,7 @@ To search for a motion from our motion library, visit https://me.meshcapade.com/
 </details>
 
 ## III. Download the .FBX
-Go to your [avatar vault](https://me.meshcapade.com/vault), and click the `...` on the top right corner of the avatar containing the motion you'd like to download.  In the download options, make sure that `file format` is `fbx` (`obj` has no motion) and `Pose/Motion` is `Captured Motion`.  For `compatibility mode`, select `Unreal` if you are interested in using the Meshcapade body with pose correctives.  Choose `Unreal - no blend shapes` if you're only interested in the motion, this will make the import process faster.  Choose `Unreal` if you're following the [Advanced Features](#vii-advanced-features) workflow.
+Go to your [avatar vault](https://me.meshcapade.com/vault), and click the `...` on the top right corner of the avatar containing the motion you'd like to download.  In the download options, make sure that `file format` is `fbx` (`obj` has no motion) and `Pose/Motion` is `Captured Motion`.  For `compatibility mode`, select `Unreal` if you are interested in using the SMPL-body with pose correctives.  Choose `Unreal - no blend shapes` if you're only interested in the motion, this will make the import process faster.  Choose `Unreal` if you're following the [Advanced Features](#vii-advanced-features) workflow.
 
 <span style="color:magenta">TODO: update this image when possible</span>
 
@@ -63,7 +63,7 @@ If you’re interested in the [Advanced Features](#vii-advanced-features), you n
 ![import00](images/readme_import03.png)
 
 ## V. Retargeting animation
-One thing you may want to do is retarget the motion from the Meshcapade body onto the body of your character.  To do so, you will need a retargeter.  Retargeters require two IK rigs: one for the source body, the Meshcapade body in this case, and one for the target body - your character.  The Meshcapade Unreal plugin comes with a sample retargeter for the Unreal mannequin, including an IK rig for the Meshcapade body and an IK rig for the Unreal mannequin.
+One thing you may want to do is retarget the motion from the SMPL-body onto the body of your character.  To do so, you will need a retargeter.  Retargeters require two IK rigs: one for the source body, the SMPL-body in this case, and one for the target body - your character.  The Meshcapade Unreal plugin comes with a sample retargeter for the Unreal mannequin, including an IK rig for the SMPL-body and an IK rig for the Unreal mannequin.
 
 ### A. Making your own IK rig
 
@@ -95,7 +95,7 @@ Finally, the chains of the two IK rigs need to be correlated.  There are several
 For more, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
 
 ### C. Retargeting animation
-Now that the retargeter is built, it can be used to retarget any number of animations between the Meshcapade body and the body of your character.  To do so, simply right-click on an animation file (it will have a dark green bar in the middle of it), and select `Retarget Animation Assets` > `Duplicate and Retarget Animation Assets/Blueprints`.
+Now that the retargeter is built, it can be used to retarget any number of animations between the SMPL-body and the body of your character.  To do so, simply right-click on an animation file (it will have a dark green bar in the middle of it), and select `Retarget Animation Assets` > `Duplicate and Retarget Animation Assets/Blueprints`.
 
 ![retarget4](images/readme_retarget04.png)
 
@@ -151,13 +151,13 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 ![anim editing1](images/readme_animediting01.png)
 
 ## VII. Pose correctives
-Pose correctives allow for real time calculation of pose based deformations to Meshcapade bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
+Pose correctives allow for real time calculation of pose based deformations to SMPL-bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
 
 ![pose correctives](images/readme_posecorrectives0.gif)
 
-In order to be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#v-import-the-fbx-into-unreal) when you import a Meshcapade body. 
+In order to be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#v-import-the-fbx-into-unreal) when you import a SMPL-body. 
 
-To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a Meshcapade body, then add the `Pose Correctives` actor component to the same blueprint.
+To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a SMPL-body, then add the `Pose Correctives` actor component to the same blueprint.
 
 ![add pose correctives](images/readme_posecorrectives1.gif)
 
