@@ -2,17 +2,17 @@
 
 <span style="color:magenta">TODO: Change the "Go to GitHub Repository" to just "GitHub" with the octocat icon @gabriele</span>
 <br/>
-<span style="color:magenta">TODO: add a no C++ version of the plugin to git @nathan </span>
-<br/>
 <span style="color:magenta">TODO: @simay/@gabriele figure out the buttons for two plugins FE</span>
 <br/>
 <span style="color:magenta">TODO: make all sections collapsable @gabriele</span>
+<br/>
+<span style="color:magenta">TODO: we will need to add a windows icon to the download button</span>
 <br/>
 <span style="color:magenta">TODO: convert all .gifs to video and send them to nathan @gabriele</span>
 <br/>
 <span style="color:magenta">TODO: put them on youtube and link them @nathan</span>
 
-This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://meshcapade.me/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download).
+This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://meshcapade.me/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download). 
 
 ## I. Adding the Plugin To your Unreal Project
 
@@ -152,26 +152,14 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 
 ![anim editing1](images/readme_animediting01.png)
 
-## VII. Advanced Features
-There is a version of the plugin that allows for real time calculation of pose based deformations to Meshcapade bodies, and it's extremely easy to apply to actor blueprints.  "Pose Correctives" are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
+## VII. Pose Correctives
+Pose correctives allow for real time calculation of pose based deformations to Meshcapade bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
 
 ![pose correctives](images/readme_posecorrectives0.gif)
 
-### A. Configuring Unreal to Build custom C++ code
-Unreal compiles the entire project every time it loads.  We need to add an additional compiler to Unreal, so that it can additionally compile our C++ code at startup.
+In order to be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#v-import-the-fbx-into-unreal) when you import a Meshcapade body. 
 
-Download and install [Visual Studio Community 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030).
-
-In the install options, check `Game Development with C++` and inside that, check `Unreal Engine Installer`. Also install `.NET Desktop Development`.  
-
-![visual studio UEI](images/readme_vs00.png)
-
-After installing, when you launch the Unreal project, it will compile the C++ code as part of the startup process.  There's nothing else you need to do. 
-
-### B. Adding Pose Correctives to Meshcapade Bodies
-In the [import step](#v-import-the-fbx-into-unreal), make sure you enable `Import Morph Targets`. 
-
-To enable pose correctives on a Meshcapade body, all you need to do is add a skeletal mesh component to a blueprint actor and then add the `Pose Correctives` actor component to the same blueprint.  That's it.
+To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a Meshcapade body, then add the `Pose Correctives` actor component to the same blueprint.
 
 ![add pose correctives](images/readme_posecorrectives1.gif)
 
