@@ -14,7 +14,7 @@
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://meshcapade.me/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download). 
 
-## I. Adding the Plugin To your Unreal Project
+## I. Adding the plugin to your Unreal project
 
 [Download](https://codeload.github.com/Meshcapade/mc-unreal/zip/refs/tags/v0.0.1) the Unreal Plugin or grab from our [git repo](https://github.com/Meshcapade/mc-unreal).
 
@@ -22,35 +22,35 @@ Make sure your Unreal project is closed.  Unzip the plugin and drop the `Plugins
 
 ![adding plugins to unreal project](images/readme_plugins.gif)
 
-## II. Download an Animated .FBX from [Meshcapade.me](https://meshcapade.me/)
+## II. Getting animation from [Meshcapade.me](https://meshcapade.me/)
 Currently, there are two ways to get animations from [Meshcapade.me](https://meshcapade.me/): 
-- [Motion From Video](https://me.meshcapade.com/from-videos) - Extract the human motion from a video.
+- [Motion from video](https://me.meshcapade.com/from-videos) - extract the human motion from a video.
 
 <span style="color:yellow">do we want this tidbit about how many animations? I just made up 10,000</span></br>
-- [Motion from Text](https://me.meshcapade.com/editor) - Find a human motion in our library of 10,000 motions.  
-### A. [Motion From Video](https://me.meshcapade.com/from-videos)
-To get an animation from a video, visit 
+- [Motion from text](https://me.meshcapade.com/editor) - find a human motion in our library of 10,000 motions.  
+### A. [Motion from video](https://me.meshcapade.com/from-videos)
+to get an animation from a video, visit 
 https://me.meshcapade.com/from-videos.  Follow the prompts until you've created an animated avatar.
 
 ![from video](images/readme_afv00.png)
 
-### B. [Motion from Text](https://me.meshcapade.com/editor)
+### B. [Motion from text](https://me.meshcapade.com/editor)
 To search for a motion from our motion library, visit https://me.meshcapade.com/editor. In the top right, there is a search box where you can search for an animation.  Once you've found the animation you want, save the avatar into your vault.
 
 ![from text](images/readme_tmr00.png)
 
 </details>
 
-## III. download the fbx
+## III. Download the .FBX
 Go to your [avatar vault](https://me.meshcapade.com/vault), and click the `...` on the top right corner of the avatar containing the motion you'd like to download.  In the download options, make sure that `file format` is `fbx` (`obj` has no motion) and `Pose/Motion` is `Captured Motion`.  For `compatibility mode`, select `Unreal` if you are interested in using the Meshcapade body with pose correctives.  Choose `Unreal - no blend shapes` if you're only interested in the motion, this will make the import process faster.  Choose `Unreal` if you're following the [Advanced Features](#vii-advanced-features) workflow.
 
 <span style="color:magenta">TODO: update this image when possible</span>
 
 ![download](images/readme_download00.png)
 
-## IV. Import the fbx into Unreal
+## IV. Import the .FBX into Unreal
 
-With the fbx downloaded, import it into your unreal project (File > Import).  
+With the .FBX downloaded, import it into your unreal project (File > Import).  
 
 Set the skeleton to `SK_MeshcapadeBody`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_MeshcapadeBody` is located here: `Content/Plugins/Meshcapade/Meshes/SK_MeshcapadeBody`.
 
@@ -62,10 +62,10 @@ If you’re interested in the [Advanced Features](#vii-advanced-features), you n
 
 ![import00](images/readme_import03.png)
 
-## V. Retargeting Animation
+## V. Retargeting animation
 One thing you may want to do is retarget the motion from the Meshcapade body onto the body of your character.  To do so, you will need a retargeter.  Retargeters require two IK rigs: one for the source body, the Meshcapade body in this case, and one for the target body - your character.  The Meshcapade Unreal plugin comes with a sample retargeter for the Unreal mannequin, including an IK rig for the Meshcapade body and an IK rig for the Unreal mannequin.
 
-### A. Making your own IK Rig
+### A. Making your own IK rig
 
 First, you need to make an IK Rig for your character.  In the top right corner of the Content Browser, click on `Settings` and make sure `Show Plugin Content` is checked.  Then open `Plugins` > `Meshcapade Content` > `Rigs`.  Duplicate the `IK_Manniquen` rig. 
 
@@ -77,7 +77,7 @@ If your character's skeleton follows the Unreal character naming convention, you
 
 For more on this subject, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
 
-### B. Making your own Retargeter
+### B. Making your own retargeter
 Once you have the IK rig for your character created, you can make a retargeter.  Right-click in the Content Browser and type `retargeter` or go to `Animation` > `Retargeting` > `IK Retargeter`.  Double-click the newly created retargeter.  
 
 A retargeter contains two IK rigs and the relationship between them.  Set the two IK rigs in the details panel.
@@ -94,7 +94,7 @@ Finally, the chains of the two IK rigs need to be correlated.  There are several
 
 For more, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
 
-### C. Retargeting Animation
+### C. Retargeting animation
 Now that the retargeter is built, it can be used to retarget any number of animations between the Meshcapade body and the body of your character.  To do so, simply right-click on an animation file (it will have a dark green bar in the middle of it), and select `Retarget Animation Assets` > `Duplicate and Retarget Animation Assets/Blueprints`.
 
 ![retarget4](images/readme_retarget04.png)
@@ -119,7 +119,7 @@ You will have to make edits to this control rig depending on how different your 
 
 ![controlrig1](images/readme_controlrig01.png)
 
-In the Preview Scene Settings, change the preview mesh to that of your character.  
+In the `Preview Scene Settings`, change the preview mesh to that of your character.  
 
 If you are retargeting a UE4 character, for example, you would need to make a few changes to the skeleton.  In the Rig Hierarchy, you can rearrange bones by clicking and dragging them.  The spine, neck and hands are different between the UE4 and UE5 characters.  You'd make the following changes:
 - Move `clavicle_l`, `clavicle_r` and `neck_01` to be underneath `spine_03`
@@ -150,7 +150,7 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 
 ![anim editing1](images/readme_animediting01.png)
 
-## VII. Pose Correctives
+## VII. Pose correctives
 Pose correctives allow for real time calculation of pose based deformations to Meshcapade bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
 
 ![pose correctives](images/readme_posecorrectives0.gif)
