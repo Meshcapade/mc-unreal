@@ -8,9 +8,9 @@
 <br/>
 <span style="color:magenta">TODO: we will need to add a windows icon to the download button</span>
 <br/>
-<span style="color:magenta">TODO: convert all .gifs to video and send them to nathan @gabriele</span>
+<span style="color:magenta">TODO: fix the youtube preview images to be hosted locally @nathan</span>
 <br/>
-<span style="color:magenta">TODO: put them on youtube and link them @nathan</span>
+<span style="color:magenta">TODO: get youtube videos playing on the tutorial page @gabriele (they work on git)</span>
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://meshcapade.me/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download). 
 
@@ -105,7 +105,7 @@ Select the retargeter you'd like to use
 
 Here's an example of the retargeted animation next to the original animation
 
-![retarget example](https://youtu.be/dDYhbGmUmCA)
+[![Retarget Example](https://i.ytimg.com/vi/dDYhbGmUmCA/maxresdefault.jpg)](https://youtu.be/dDYhbGmUmCA "Retarget Example")
 
 ## VI. Editing animation
 
@@ -136,7 +136,7 @@ Right-click on the top node of your animation in the track panel and choose `Bak
 
 Note: the animation will only bake what's between the red and green markers on the timeline.  If you want to trim the animation, you can do it by moving the markers.
 
-![anim editing0](https://youtu.be/FoIkByz4ePU)
+[![Animation Editing Example 1](https://i.ytimg.com/vi/FoIkByz4ePU/maxresdefault.jpg)](https://youtu.be/FoIkByz4ePU "Animation Editing Example 1")
 
 Select the new control rig layer on the track and right-click and choose `Add Section` > `Additive`.  This will allow you to add animation on top of the existing animation.
 
@@ -144,7 +144,7 @@ Select the new control rig layer on the track and right-click and choose `Add Se
 
 At this point, you can spend as little or as much time as you'd like to make the animation do what you want to do. In the example below, I tweak the height of the global control so that the character doesn't clip the ground as much as he bends forward.  You could then fix the hands and fingers or add cartoony motion.
 
-![anim editing1](https://youtu.be/tRF8h6V9KIw)
+[![Animation Editing Example 2](https://i.ytimg.com/vi/tRF8h6V9KIw/maxresdefault.jpg)](https://youtu.be/tRF8h6V9KIw "Animation Editing Example 2")
 
 Once you're happy with your animation, the last step is to bake it.  Right-click on the top node in the track panel and choose `Bake Animation Sequence` and save it.  Now your edited animation can be used as normal.
 
