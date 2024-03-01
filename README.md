@@ -153,17 +153,17 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 ## VII. Pose correctives
 Pose correctives allow for real time calculation of pose based deformations to SMPL-bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
 
-[![Pose Correctives](https://res.cloudinary.com/marcomontalbano/image/upload/v1709311585/video_to_markdown/images/youtube--CxJnpEXfjG0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/CxJnpEXfjG0 "Pose Correctives")
+[![Pose Corrective Explanation](https://res.cloudinary.com/marcomontalbano/image/upload/v1709311585/video_to_markdown/images/youtube--CxJnpEXfjG0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/CxJnpEXfjG0 "Pose Corrective Explanation")
 
 In order to be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#v-import-the-fbx-into-unreal) when you import a SMPL-body. 
 
 To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a SMPL-body, then add the `Pose Correctives` actor component to the same blueprint.
 
-![add pose correctives](https://youtu.be/ZKWhLW5n00c)
+[![Adding Pose Correctives](https://i.ytimg.com/vi/ZKWhLW5n00c/maxresdefault.jpg)](https://youtu.be/ZKWhLW5n00c "Adding Pose Correctives")
 
 The example below has two bodies overlaying each other to further illustrate the result.  The orange body doesn't have pose correctives, and the textured body does. 
 
-![pose corrective example](https://youtu.be/3F3ReRXnuV4)
+[![Pose Correctives in Unreal](https://i.ytimg.com/vi/3F3ReRXnuV4/maxresdefault.jpg)](https://youtu.be/3F3ReRXnuV4 "Pose Correctives in Unreal")
 
 
 <details>
