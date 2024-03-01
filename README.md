@@ -153,7 +153,7 @@ Once you're happy with your animation, the last step is to bake it.  Right-click
 ## VII. Pose correctives
 Pose correctives allow for real time calculation of pose based deformations to SMPL-bodies, and it's extremely easy to apply to actor blueprints.  They are a complex set of blend shapes that we apply based on the pose of the skeleton.  This achieves much more realistic soft tissue deformation than the traditional skinning method.
 
-![pose correctives](https://youtu.be/CxJnpEXfjG0)
+[![Pose Correctives](https://res.cloudinary.com/marcomontalbano/image/upload/v1709311585/video_to_markdown/images/youtube--CxJnpEXfjG0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/CxJnpEXfjG0 "Pose Correctives")
 
 In order to be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#v-import-the-fbx-into-unreal) when you import a SMPL-body. 
 
