@@ -37,8 +37,6 @@ https://me.meshcapade.com/from-videos.  Follow the prompts until you've created 
 ### B. [Motion from Text](https://me.meshcapade.com/editor)
 To search for a motion from our motion library, visit https://me.meshcapade.com/editor. In the top right, there is a search box where you can search for an animation.  Once you've found the animation you want, save the avatar into your vault.
 
-<span style="color:magenta">TODO: update this image when possible</span>
-
 ![from text](images/readme_tmr00.png)
 
 </details>
