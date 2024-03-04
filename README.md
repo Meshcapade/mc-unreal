@@ -4,7 +4,6 @@
 <br/>
 <span style='color:magenta'>TODO: we will need to add a windows icon to the download button</span>
 <br/>
-<span style='color:magenta'>TODO: fix the youtube preview images to be hosted locally @nathan</span>
 
 <p class='hidden'>
   
