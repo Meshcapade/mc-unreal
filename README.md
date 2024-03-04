@@ -119,7 +119,7 @@ Select the retargeter you'd like to use
 
 Here's an example of the retargeted animation next to the original animation
 
-[![Retargeting Example](images/readme_preview_retargetingexample.png)](https://youtu.be/dDYhbGmUmCA "Retarget Example")
+[![Retargeting Example]](https://youtu.be/dDYhbGmUmCA "Retarget Example")
 
 </details>
 
