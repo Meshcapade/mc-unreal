@@ -1,15 +1,6 @@
 # Meshcapade Unreal Plugin
 
-<span style='color:magenta'>TODO: @simay/@gabriele figure out the buttons for two plugins FE</span>
-<br/>
-<span style='color:magenta'>TODO: we will need to add a windows icon to the download button</span>
-<br/>
-
-<p class='hidden'>
-  
-Visit a better version of this tutorial [here](https://me.meshcapade.com/integrations/unreal).
-
-</p>
+<p class='hidden'>Visit a better version of this tutorial <a href='https://me.meshcapade.com/integrations/unreal'>here</a>.</p>
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://me.meshcapade.com/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download).
 
