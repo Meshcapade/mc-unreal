@@ -44,9 +44,9 @@ To search for a motion from our motion library, visit the Meshcapade [editor](ht
 <details id='downloading'>
 <summary>III. Downloading the animation </summary>
 
-Go to your [avatar vault](https://me.meshcapade.com/vault), and click the `...` on the top right corner of the avatar containing the motion you'd like to download.  In the download options, make sure that `file format` is `.FBX` (`.OBJ` has no motion) and that `Pose/Motion` is `Captured Motion`.  For `compatibility mode`, select `Unreal - no blend shapes` if you're only interested in the motion which will make the import process faster.  Choose `Unreal` if you want to use [Pose Correctives](#pose-correctives).
+Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar in editor (which contains the motion you'd like to download). Once the avatar is open in the editor, click the Download button located at the top left corner of the page. Download options will then appear. If you're only interested in downloading the motion–which will make the import process faster, make sure that `file format` is set to `.FBX` (`.OBJ` has no motion).  and `compatibility mode` is set to `Unreal - no blend shapes`. If you want to use [Pose Correctives](#pose-correctives), then make sure `compatibility mode` is set to `Unreal`. Click Download avatar.
 
-![download](images/readme_download00.png)
+![download](images/readme_download00.jpeg)
 
 </details>
 
