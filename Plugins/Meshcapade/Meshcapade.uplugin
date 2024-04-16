@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "0.2.0",
+	"VersionName": "1.0.0",
 	"FriendlyName": "Meshcapade",
 	"Description": "Meshcapade runtime tools and editor content",
 	"Category": "Meshcapade",
