@@ -1,4 +1,4 @@
-# Meshcapade Unreal Plugin (5.3)
+# Meshcapade Unreal Plugin for UE 5.3
 
 <p class='hidden'>For a better viewing experience, visit our <a href='https://me.meshcapade.com/integrations/unreal'>webpage</a>.</p>
 
