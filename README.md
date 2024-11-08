@@ -4,7 +4,7 @@
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://me.meshcapade.com/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download). Bodies created on the Meshcapade platform are created using the [SMPL](https://smpl.is.tue.mpg.de/) core technology, and are thus referred to as [SMPL-bodies](https://smpl.is.tue.mpg.de/license.html).  
 
-📝 This version of the plugin has only been tested on Unreal Engine version 5.3.  It may or may not work on earlier or later versions.
+📝 This version of the plugin has only been tested on Unreal Engine version 5.4.  It may or may not work on earlier or later versions.
 
 <details open>
 <summary>I. Adding the plugin to your Unreal project</summary>
@@ -135,7 +135,7 @@ If you are retargeting a UE4 character, for example, you would need to make a fe
 
 ![controlrig1](images/readme_controlrig01.png)
 
-For more information on this subject, see the Unreal documentation on [Control Rig](https://docs.unrealengine.com/5.3/en-US/control-rig-in-unreal-engine/).
+For more information on this subject, see the Unreal documentation on [Control Rig](https://docs.unrealengine.com/5.4/en-US/control-rig-in-unreal-engine/).
 
 Once you have a control rig that works with your character, you can bake the animation onto that control rig.  Make a new level sequence by right-clicking and typing `level sequence` or going to `Cinematics` > `Level Sequence`.  Drag the animation asset into your level, select it, and then in the sequencer select `+Track` > `Actor To Sequencer` > `<your animation asset>`.
 
