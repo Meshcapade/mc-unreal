@@ -1,4 +1,4 @@
-# Meshcapade Unreal Plugin (UE 5.3)
+# Meshcapade Unreal Plugin (UE 5.4)
 
 <p class='hidden'>For a better viewing experience, visit our <a href='https://me.meshcapade.com/integrations/unreal'>webpage</a>.</p>
 
@@ -74,53 +74,46 @@ Set the skeleton to `SK_MeshcapadeBody`.  If you don't see it, then click the ge
 <details>
 <summary>V. Retargeting the animation</summary>
 
-One thing you may want to do is retarget the motion from the SMPL-body onto the body of your character.  To do so, you will need a retargeter.  Retargeters require two IK rigs: one for the source body, the SMPL-body in this case, and one for the target body - your character.  The Meshcapade Unreal plugin comes with a sample retargeter for the Unreal mannequin, including an IK rig for the SMPL-body and an IK rig for the Unreal mannequin.  If you already have a retargeter from the Unreal mannequin to your character, then this will provide a straightforward way to get motion from a SMPL-body directly onto your character.   
+One thing you may want to do is retarget the motion from the SMPL-body onto the body of your character.  
 
-### A. Making your own IK rig
+### A. Auto Retargeting
 
-If you want to make a retargeter, the first thing you need to do is make an IK Rig for your character.  In the top right corner of the Content Browser, click on `Settings` and make sure `Show Plugin Content` is checked.  Then open `Plugins` > `Meshcapade Content` > `Rigs`.  Duplicate the `IK_Manniquen` rig.
+As of 5.4, this process has been massively simplified.  Just find your animation, right click on it, and choose `Retarget Animations`.
 
-![ik rig0](images/readme_ikrig00.png)
+![retarget06.png](images/readme_retarget06.png)
 
-If your character's skeleton follows the UE5 character convention, you only need to change the preview skeletal mesh to your character.  If you're using a UE4 character, you may need to change the `End Bone` of the `Spine` IK chain to `spine_03`.
+Assign the character to which you'd like to transfer the animation to the `Target Skeletal Mesh`.  Choose the animation(s) you want to retarget, and then click `Export Animations`.
 
-![ik rig1](images/readme_ikrig01.png)
+![retarget07.png](images/readme_retarget07.png)
 
-For more information on this subject, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
+If the animation looks the way you want it to, then you can skip to [editing the animation](#editing)
 
-### B. Making your own retargeter
-Once you have the IK rig for your character created, you can make a retargeter.  Right-click in the Content Browser and type `retargeter` or go to `Animation` > `Retargeting` > `IK Retargeter`.  Double-click the newly created retargeter.
+### B. Editing the Retargeter
 
-A retargeter contains two IK rigs and the relationship between them.  Set the two IK rigs in the details panel.
+If the animation isn't exactly the way you'd like it, you can adjust the retargeter.  By default `Auto Generate Retargeter` is checked.  We can mofidy the retargeting assets to make them exactly what we want them to be.
 
-![retarget0](images/readme_retarget00.png)
+In the `Retarget Animations` menu, choose `Export Retarget Assets` 
+![retarget08.png](images/readme_retarget08.png)
 
-The poses of the two skeletons need to match as well.  To do this, change the display mode to `Edit Retarget Pose` on the top left.  Then rotate the bones of the source and/or the target until the angles match one another as closely as possible.
+Open the newly generated retargeting asset.
+![retarget09.png](images/readme_retarget09.png)
 
-![retarget1](images/readme_retarget01.png)
+To adjust the retargeter, click the 3 dots next to `Running Retarget`, and select `Edit Retarget Pose`.
+![retarget10.png](images/readme_retarget10.png)
 
-Finally, the chains of the two IK rigs need to be correlated.  There are several ways to do this, but if you copied the Unreal mannequin all you need to do is click `Auto-Map Chains` > `Map All (Exact)`.
+You can see that on the automatic retargeter the spine and one of the arms need to be fixed.  Select the bone you want to fix, press `e` to enter rotation mode, and then manually correct the rotation.  
+![retarget01.gif](images/readme_retarget00.gif)
 
-![retarget2](images/readme_retarget02.png)
+Right click on your animation again, and choose `Retarget Animations`.  But this time, uncheck `Auto Generate Retargeter` and set the retargeter to the one you corrected.  Repeat the process of editing the retargeter and testing it until it's the way you want it.  The exact issues you face with the automatically generated retargeter will vary depending on your specific character. 
+![retarget11.png](images/readme_retarget11.png)
 
-For more information on this subject, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
-
-### C. Retargeting animation
-Now that the retargeter is built, it can be used to retarget any number of animations between the SMPL-body and the body of your character.  To do so, simply right-click on an animation file (it will have a dark green bar in the middle of it), and select `Retarget Animation Assets` > `Duplicate and Retarget Animation Assets/Blueprints`.
-
-![retarget4](images/readme_retarget04.png)
-
-Select the retargeter you'd like to use.
-
-![retareget5](images/readme_retarget05.png)
-
-This process will create a new animation asset for your character.  Here's an example of the retargeted animation next to the original animation.
+Here's an example of the retargeted animation on a custom character next to the original animation.
 
 [![Retargeting Example](images/readme_preview_retargetingexample.png)](https://youtu.be/dDYhbGmUmCA "Retarget Example")
 
 </details>
 
-<details>
+<details id='editing'>
 <summary>VI. Editing the animation</summary>
 
 If the animation doesn't look right on your character, there are two options:  
@@ -194,4 +187,4 @@ The example below has two bodies overlapping to illustrate the result further.  
 [![Pose Correctives in Unreal](images/readme_preview_posecorrective2.png)](https://youtu.be/3F3ReRXnuV4 "Pose Correctives in Unreal")
 </details>
 
-For any questions, please [contact us](https://meshcapade.com/contact).
+We welcome your feedback on this, or any of our other products.  For comments, questions or feedback, please [contact us](https://meshcapade.com/contact).
