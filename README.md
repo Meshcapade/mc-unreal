@@ -59,8 +59,21 @@ Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar i
 
 </details>
 
+<details id='importing_glb'>
+<summary>IV (1). Importing the .GLB into Unreal</summary>
+
+You can import the .GLB into your project using either the Scene import (File > Import into Level) or Asset import (Content Drawer > Import). 
+
+📝 If you need the animated camera, you have to use the Scene Import (File > Import into Level).  
+
+// INSERT HERE - GLB Plugin name changes to the below variables and paths.
+For retargetting - Set the skeleton to `SK_Meshcapade_glb`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_Meshcapade_glb` is located here: `Content/Plugins/Meshcapade/Meshes/SK_Meshcapade_glb`.
+</details>
+
 <details id='importing_fbx'>
-<summary>IV (1). Importing the .FBX into Unreal</summary>
+<summary>IV (2). Importing the .FBX into Unreal</summary>
+
+📝 We generally recommend using the GLB and the corresponding retargetter, since we might deprecate FBX in future releases.
 
 With the .FBX downloaded, import it into your unreal project through the content drawer. (Content Drawer > Import)
 
@@ -75,17 +88,6 @@ Set the skeleton to `SK_Meshcapade_fbx`.  If you don't see it, then click the ge
 ![import00](images/readme_import03.png)
 
 📝 If you are importing a single frame .FBX, for example if you [created a SMPL-body from an image](https://me.meshcapade.com/from-photos), also check `Use T0 As Ref Pose`.
-</details>
-
-<details id='importing_glb'>
-<summary>IV (2). Importing the .GLB into Unreal</summary>
-
-You can import the .GLB into your project using either the Scene import (File > Import into Level) or Asset import (Content Drawer > Import). 
-
-📝 If you need the animated camera, you have to use the Scene Import (File > Import into Level).  
-
-// INSERT HERE - GLB Plugin name changes to the below variables and paths.
-For retargetting - Set the skeleton to `SK_Meshcapade_glb`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_Meshcapade_glb` is located here: `Content/Plugins/Meshcapade/Meshes/SK_Meshcapade_glb`.
 </details>
 
 <details>
@@ -201,7 +203,7 @@ _In the example above, the body on the left shows the motion with the pose corre
 </span>
 </center>
 
-📝 To be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#importing_fbx) when you import a SMPL-body.
+📝 To be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#importing_glb) when you import a SMPL-body.
 
 To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a SMPL-body, then add the `Pose Correctives` actor component to the same blueprint.
 
