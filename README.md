@@ -53,14 +53,14 @@ To search for a motion from our motion library, visit the Meshcapade [editor](ht
 <details id='downloading'>
 <summary>III. Downloading the animation </summary>
 
-Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar in editor (which contains the motion you'd like to download). Once the avatar is open in the editor, click the Download button located at the top left corner of the page. Download options will then appear. If you're only interested in downloading the motion–which will make the import process faster, make sure that `file format` is set to `.FBX` (`.OBJ` has no motion).  and `compatibility mode` is set to `Unreal - no blend shapes`. If you want to use [Pose Correctives](#pose-correctives), then make sure `compatibility mode` is set to `Unreal`. Click Download avatar. If you want to use the `.GLB` instead, you can set the `file format` to `.GLB` and `compatibility mode` to `Unreal` - we currently always export `.GLB` files with [Pose Correctives](#pose-correctives).  
+Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar in editor (which contains the motion you'd like to download). Once the avatar is open in the editor, click the Download button located at the top left corner of the page. Download options will then appear. If you're only interested in downloading the motion–which will make the import process faster, make sure that `file format` is set to `.FBX` (`.OBJ` has no motion).  and `compatibility mode` is set to `Unreal - no blend shapes`. If you want to use [Pose Correctives](#pose-correctives), then make sure `compatibility mode` is set to `Unreal`. Click Download avatar. If you want to use the `.GLB` instead, you can set the `file format` to `.GLB` and `compatibility mode` to `Unreal` - we currently always export `.GLB` files with [Pose Correctives](#pose-correctives).  If you want to download camera as well, it is only available in the `.GLB` format.
 
 ![download](images/readme_download00.jpeg)
 
 </details>
 
 <details id='importing_glb'>
-<summary>IV A. Importing the .GLB into Unreal</summary>
+<summary>IV a. Importing the .GLB into Unreal</summary>
 
 You can import the .GLB into your project using either the Scene import (File > Import into Level) or Asset import (Content Drawer > Import). 
 
@@ -70,7 +70,7 @@ For retargetting - Set the skeleton to `SK_Meshcapade_glb`.  If you don't see it
 </details>
 
 <details id='importing_fbx'>
-<summary>IV B. Importing the .FBX into Unreal</summary>
+<summary>IV b. Importing the .FBX into Unreal</summary>
 
 📝 We generally recommend using the GLB and the corresponding retargetter, since we might deprecate FBX in future releases.
 
