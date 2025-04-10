@@ -4,14 +4,14 @@
 
 | Unreal Version | Plugin Version | Download Release                                                                             |
 |:--------------:|:--------------:|:--------------------------------------------------------------------------------------------:|
-| v5.3           | v5.3.2         | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.3.2.0/mc-unreal.zip) |
-| v5.4           | v5.4.4         | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.4.4.0/mc-unreal.zip) |
+| v5.3           | v5.3.2.0       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.3.2.0/mc-unreal.zip) |
+| v5.4           | v5.4.4.0       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.4.4.0/mc-unreal.zip) |
 
 <p class='hidden'>For a better viewing experience, visit our <a href='https://me.meshcapade.com/integrations/unreal'>webpage</a>.</p>
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://me.meshcapade.com/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download). Bodies created on the Meshcapade platform are created using the [SMPL](https://smpl.is.tue.mpg.de/) core technology, and are thus referred to as [SMPL-bodies](https://smpl.is.tue.mpg.de/license.html).  
 
-📝 This guide has only been tested on Unreal Engine version 5.4. It may or may not work on earlier or later versions.
+📝 This guide has only been tested on Unreal Engine versions 5.3 and 5.4. It may or may not work on earlier or later versions.
 
 <details open>
 <summary>I. Adding the plugin to your Unreal project</summary>
@@ -66,7 +66,6 @@ You can import the .GLB into your project using either the Scene import (File > 
 
 📝 If you need the animated camera, you have to use the Scene Import (File > Import into Level).  
 
-// INSERT HERE - GLB Plugin name changes to the below variables and paths.
 For retargetting - Set the skeleton to `SK_Meshcapade_glb`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_Meshcapade_glb` is located here: `Content/Plugins/Meshcapade/Meshes/SK_Meshcapade_glb`.
 </details>
 
