@@ -60,7 +60,7 @@ Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar i
 </details>
 
 <details id='importing_glb'>
-<summary>IV (1). Importing the .GLB into Unreal</summary>
+<summary>IV A. Importing the .GLB into Unreal</summary>
 
 You can import the .GLB into your project using either the Scene import (File > Import into Level) or Asset import (Content Drawer > Import). 
 
@@ -70,7 +70,7 @@ For retargetting - Set the skeleton to `SK_Meshcapade_glb`.  If you don't see it
 </details>
 
 <details id='importing_fbx'>
-<summary>IV (2). Importing the .FBX into Unreal</summary>
+<summary>IV B. Importing the .FBX into Unreal</summary>
 
 📝 We generally recommend using the GLB and the corresponding retargetter, since we might deprecate FBX in future releases.
 
