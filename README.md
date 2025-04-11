@@ -4,8 +4,8 @@
 
 | Unreal Version | Plugin Version | Download Release                                                                             |
 |:--------------:|:--------------:|:--------------------------------------------------------------------------------------------:|
-| v5.3           | v5.3.2.1       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.3.2.0/mc-unreal.zip) |
-| v5.4           | v5.4.4.1       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.4.4.0/mc-unreal.zip) |
+| v5.3           | v5.3.2.1       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.3.2.1/mc-unreal.zip) |
+| v5.4           | v5.4.4.1       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.4.4.1/mc-unreal.zip) |
 
 <p class='hidden'>For a better viewing experience, visit our <a href='https://me.meshcapade.com/integrations/unreal'>webpage</a>.</p>
 
