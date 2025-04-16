@@ -4,14 +4,14 @@
 
 | Unreal Version | Plugin Version | Download Release                                                                             |
 |:--------------:|:--------------:|:--------------------------------------------------------------------------------------------:|
-| v5.3           | v5.3.2         | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.3.2.0/mc-unreal.zip) |
-| v5.4           | v5.4.4         | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.4.4.0/mc-unreal.zip) |
+| v5.3           | v5.3.2.1       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.3.2.1/mc-unreal.zip) |
+| v5.4           | v5.4.4.1       | [Download](https://github.com/Meshcapade/mc-unreal/releases/download/v5.4.4.1/mc-unreal.zip) |
 
 <p class='hidden'>For a better viewing experience, visit our <a href='https://me.meshcapade.com/integrations/unreal'>webpage</a>.</p>
 
 This plugin allows you to quickly retarget motions created on the [Meshcapade.me](https://me.meshcapade.com/) platform onto your own characters in [Unreal Engine 5](https://www.unrealengine.com/en-US/download). Bodies created on the Meshcapade platform are created using the [SMPL](https://smpl.is.tue.mpg.de/) core technology, and are thus referred to as [SMPL-bodies](https://smpl.is.tue.mpg.de/license.html).  
 
-📝 This guide has only been tested on Unreal Engine version 5.4. It may or may not work on earlier or later versions.
+📝 This guide has only been tested on Unreal Engine versions 5.3 and 5.4. It may or may not work on earlier or later versions.
 
 <details open>
 <summary>I. Adding the plugin to your Unreal project</summary>
@@ -53,21 +53,32 @@ To search for a motion from our motion library, visit the Meshcapade [editor](ht
 <details id='downloading'>
 <summary>III. Downloading the animation </summary>
 
-Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar in editor (which contains the motion you'd like to download). Once the avatar is open in the editor, click the Download button located at the top left corner of the page. Download options will then appear. If you're only interested in downloading the motion–which will make the import process faster, make sure that `file format` is set to `.FBX` (`.OBJ` has no motion).  and `compatibility mode` is set to `Unreal - no blend shapes`. If you want to use [Pose Correctives](#pose-correctives), then make sure `compatibility mode` is set to `Unreal`. Click Download avatar.
+Go to your [avatar vault](https://me.meshcapade.com/vault) and open the avatar in editor (which contains the motion you'd like to download). Once the avatar is open in the editor, click the Download button located at the top left corner of the page. Download options will then appear. If you're only interested in downloading the motion–which will make the import process faster, make sure that `file format` is set to `.FBX` (`.OBJ` has no motion).  and `compatibility mode` is set to `Unreal - no blend shapes`. If you want to use [Pose Correctives](#pose-correctives), then make sure `compatibility mode` is set to `Unreal`. Click Download avatar. If you want to use the `.GLB` instead, you can set the `file format` to `.GLB` and `compatibility mode` to `Unreal` - we currently always export `.GLB` files with [Pose Correctives](#pose-correctives).  If you want to download camera as well, it is only available in the `.GLB` format.
 
 ![download](images/readme_download00.jpeg)
 
 </details>
 
-<details id='importing'>
-<summary>IV. Importing the .FBX into Unreal</summary>
+<details id='importing_glb'>
+<summary>IV a. Importing the .GLB into Unreal</summary>
 
-With the .FBX downloaded, import it into your unreal project (File > Import).
+You can import the .GLB into your project using either the Scene import (File > Import into Level) or Asset import (Content Drawer > Import). 
 
-Set the skeleton to `SK_MeshcapadeBody`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_MeshcapadeBody` is located here: `Content/Plugins/Meshcapade/Meshes/SK_MeshcapadeBody`.
+📝 If you need the animated camera, you have to use the Scene Import (File > Import into Level).  
+
+For retargetting - Set the skeleton to `SK_Meshcapade_glb`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_Meshcapade_glb` is located here: `Content/Plugins/Meshcapade/Meshes/SK_Meshcapade_glb`.
+</details>
+
+<details id='importing_fbx'>
+<summary>IV b. Importing the .FBX into Unreal</summary>
+
+📝 We generally recommend using the GLB and the corresponding retargetter, since we might deprecate FBX in future releases.
+
+With the .FBX downloaded, import it into your unreal project through the content drawer. (Content Drawer > Import)
+
+Set the skeleton to `SK_Meshcapade_fbx`.  If you don't see it, then click the gear next to the search box and make sure `Show Plugin Content` is checked.  In the content browser, `SK_Meshcapade_fbx` is located here: `Content/Plugins/Meshcapade/Meshes/SK_Meshcapade_fbx`.
 
 ![import00](images/readme_import00.png)
-
 
 📝 Make sure that `Import Animation` is checked.
 
@@ -81,9 +92,23 @@ Set the skeleton to `SK_MeshcapadeBody`.  If you don't see it, then click the ge
 <details>
 <summary>V. Retargeting the animation</summary>
 
-One thing you may want to do is retarget the motion from the SMPL-body onto the body of your character.  To do so, you will need a retargeter.  Retargeters require two IK rigs: one for the source body, the SMPL-body in this case, and one for the target body - your character.  The Meshcapade Unreal plugin comes with a sample retargeter for the Unreal mannequin, including an IK rig for the SMPL-body and an IK rig for the Unreal mannequin.  If you already have a retargeter from the Unreal mannequin to your character, then this will provide a straightforward way to get motion from a SMPL-body directly onto your character.   
+One thing you may want to do is retarget the motion from the SMPL-body onto the body of your character.  To do so, you will need a retargeter.  Retargeters require two IK rigs: one for the source body, the SMPL-body in this case, and one for the target body - your character.  The Meshcapade Unreal plugin comes with a sample retargeter for the Unreal mannequin, including an IK rig for the SMPL-body and an IK rig for the Unreal mannequin. There are different retargetters based on whether you want to retarget the `.FBX` or the `.GLB`. If you already have a retargeter from the Unreal mannequin to your character, then this will provide a straightforward way to get motion from a SMPL-body directly onto your character.   
 
-### A. Making your own IK rig
+### A. Retargeting animation
+
+To use the retargeters that ship with the Meshcapade plugin, simply right-click on an animation file (it will have a dark green bar in the middle of it), and select `Retarget Animation Assets` > `Duplicate and Retarget Animation Assets/Blueprints`.
+
+![retarget4](images/readme_retarget04.png)
+
+Select the retargeter you'd like to use.  If the file was imported as a `.GLB`, choose `RTG_Meshcapade_to_ue5_glb`.  If the file was imported as a `.FBX`, choose `RTG_Meshcapade_to_ue5_fbx`.
+
+![retareget5](images/readme_retarget05.png)
+
+This process will create a new animation asset for your character.  Here's an example of the retargeted animation next to the original animation.
+
+[![Retargeting Example](images/readme_preview_retargetingexample.png)](https://youtu.be/dDYhbGmUmCA "Retarget Example")
+
+### B. Making your own IK rig
 
 If you want to make a retargeter, the first thing you need to do is make an IK Rig for your character.  In the top right corner of the Content Browser, click on `Settings` and make sure `Show Plugin Content` is checked.  Then open `Plugins` > `Meshcapade Content` > `Rigs`.  Duplicate the `IK_Manniquen` rig.
 
@@ -95,7 +120,7 @@ If your character's skeleton follows the UE5 character convention, you only need
 
 For more information on this subject, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
 
-### B. Making your own retargeter
+### C. Making your own retargeter
 Once you have the IK rig for your character created, you can make a retargeter.  Right-click in the Content Browser and type `retargeter` or go to `Animation` > `Retargeting` > `IK Retargeter`.  Double-click the newly created retargeter.
 
 A retargeter contains two IK rigs and the relationship between them.  Set the two IK rigs in the details panel.
@@ -111,19 +136,6 @@ Finally, the chains of the two IK rigs need to be correlated.  There are several
 ![retarget2](images/readme_retarget02.png)
 
 For more information on this subject, see the Unreal documentation on [IK Rig Animation Retargeting](https://docs.unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-unreal-engine/).
-
-### C. Retargeting animation
-Now that the retargeter is built, it can be used to retarget any number of animations between the SMPL-body and the body of your character.  To do so, simply right-click on an animation file (it will have a dark green bar in the middle of it), and select `Retarget Animation Assets` > `Duplicate and Retarget Animation Assets/Blueprints`.
-
-![retarget4](images/readme_retarget04.png)
-
-Select the retargeter you'd like to use.
-
-![retareget5](images/readme_retarget05.png)
-
-This process will create a new animation asset for your character.  Here's an example of the retargeted animation next to the original animation.
-
-[![Retargeting Example](images/readme_preview_retargetingexample.png)](https://youtu.be/dDYhbGmUmCA "Retarget Example")
 
 </details>
 
@@ -190,7 +202,7 @@ _In the example above, the body on the left shows the motion with the pose corre
 </span>
 </center>
 
-📝 To be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#importing) when you import a SMPL-body.
+📝 To be able to use pose correctives, make sure you enable `Import Morph Targets` in the [import step](#importing_glb) when you import a SMPL-body.
 
 To enable pose correctives on blueprint actor, add a skeletal mesh component that contains a SMPL-body, then add the `Pose Correctives` actor component to the same blueprint.
 
