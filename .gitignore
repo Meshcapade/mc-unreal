@@ -2,3 +2,23 @@
 /Ignore/*
 
 .idea/*
+
+__pycache__/
+
+Binaries/
+Config/
+/Content/
+DerivedDataCache/
+Saved/
+MeshcapadeCache/
+Intermediate/
+/Source/
+.vs/
+
+# files
+.editorconfig
+.p4ignore
+.vsconfig
+*.sln
+*.uproject
+*.uplugin

@@ -17,48 +17,40 @@ public class Meshcapade : ModuleRules
 		AddEngineThirdPartyPrivateStaticDependencies(Target, "Eigen");
 		//AddEngineThirdPartyPrivateStaticDependencies(Target, "zlib");	// solea requirement
 
+		
 		PrivateIncludePaths.AddRange(
 			new string[] {
-				"Meshcapade/Public/",
-				"Meshcapade/Private/",
 				// ... add other private include paths required here ...
 			}
 			);
-			
-		
-		PublicDependencyModuleNames.AddRange(
-			new string[]
+
+
+			if (Target.bBuildEditor)
 			{
-				"Core",
-				"CoreUObject",
-				"Engine",
-				"InputCore", 
+				PublicDependencyModuleNames.AddRange(new string[] {
+					"Core", "CoreUObject", "Engine", "UnrealEd",
+					"Kismet", "KismetCompiler", "BlueprintGraph", "InputCore", "EnhancedInput",
+
+					//more stuff for icons
+					"Slate", "SlateCore", "EditorStyle",
+					"LevelEditor", "Blutility", "UMG", "ToolMenus", "UMGEditor"
+					
+				});
 			}
-			);
-			
-		// this is no longer being used, but since it still builds, I'll leave it here in case I need it later
-		// if we're in the editor add specific functionality that prevents building
-		if (Target.Type == TargetRules.TargetType.Editor) 
-		{
-			PublicDependencyModuleNames.AddRange(
-				new string[]
-				{
-					"UnrealEd",
-					"AssetTools",
-				}
-				);
-
-			AddEngineThirdPartyPrivateStaticDependencies(Target, "zlib");
-		}
+			else
+			{
+				PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+			}
 
 
-		PrivateDependencyModuleNames.AddRange(
+        PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"CoreUObject",
 				"Engine",
 				"Slate",
 				"SlateCore",
+				// ... add private dependencies that you statically link with here ...	
 			}
 			);
 		

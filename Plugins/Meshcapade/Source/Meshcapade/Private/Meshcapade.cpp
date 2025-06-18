@@ -1,12 +1,14 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "Meshcapade.h"
+#include "MeshcapadeStyle.h"
 
 #define LOCTEXT_NAMESPACE "FMeshcapadeModule"
 
 void FMeshcapadeModule::StartupModule()
 {
-	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+    UE_LOG(LogTemp, Warning, TEXT("MeshcapadeEditorModule started"));
+    FMeshcapadeStyle::Initialize();
 }
 
 void FMeshcapadeModule::ShutdownModule()
