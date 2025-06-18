@@ -32,22 +32,6 @@ class MCMEState:
 @unreal.uclass()
 class MeshcapadeAuthLibrary(unreal.BlueprintFunctionLibrary):
 
-    @unreal.ufunction(static=True, ret=bool)
-    def is_logged_in() -> bool:
-        """
-        Check if the user is logged in.
-        """
-        url_avatars = f"{API_LINK}/api/v1/avatars?limit=1"
-        try:
-            response = AuthBridge.authorized_request(method="GET", url=url_avatars)
-        except requests.exceptions.RequestException as e:
-            return False
-        if response.status_code == 401:
-            logger.debug("❌ Unauthorized access, user is not logged in.")
-            return False
-        elif response.status_code == 200:
-            logger.debug("✅ User is logged in.")
-            return True
         
     @unreal.ufunction(static=True, ret=bool)
     def get_avatars_and_scenes() -> bool:
@@ -331,7 +315,7 @@ class MeshcapadeAuthLibrary(unreal.BlueprintFunctionLibrary):
                     logger.error(f"❌ Invalid mesh state for avatar {avatar.name} with id {id}: {avatar.mesh_state}.")
                     continue
                 
-                if not AuthBridge.is_auth_done():
+                if not AuthBridge.is_logged_in():
                     logger.error("❌ AuthManager is not initialized. Smart GLB creator aborted.")
                     return False
             

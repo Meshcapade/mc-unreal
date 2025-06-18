@@ -6,7 +6,7 @@ from typing import Optional
 import unreal
 
 # Auth config
-from mc_plugin_config import (KEYCLOAK_DOMAIN, REALM, CLIENT_ID)
+from mc_plugin_config import KEYCLOAK_DOMAIN, REALM, CLIENT_ID
 
 
 @unreal.uclass()
@@ -78,7 +78,13 @@ class AuthBridge(unreal.BlueprintFunctionLibrary):
     @staticmethod
     def authorized_request(**kwargs):
         if AuthBridge.auth_manager:
-            return AuthBridge.auth_manager.authorized_request(**kwargs)
+            response = AuthBridge.auth_manager.authorized_request(**kwargs)
+
+            if response.status_code == 401:
+                AuthBridge._clean_up()
+
+            return response
+
         unreal.log_warning("AuthManager not initialized yet.")
         return None
 
@@ -90,13 +96,20 @@ class AuthBridge(unreal.BlueprintFunctionLibrary):
     def sign_up() -> str:
         return AuthBridge.authenticate("sign-up")
 
-    @unreal.ufunction(static=True, ret=bool)
+    @unreal.ufunction(static=True)
     def sign_out() -> None:
         if AuthBridge.auth_manager:
             AuthBridge.auth_manager.sign_out()
             AuthBridge._clean_up()
         else:
             unreal.log_warning("AuthManager not initialized yet.")
+
+    @unreal.ufunction(static=True, ret=bool)
+    def is_logged_in() -> bool:
+        if AuthBridge.auth_manager:
+            return AuthBridge.auth_manager.is_logged_in()
+        else:
+            return False
 
     @unreal.ufunction(static=True, ret=str)
     def get_token() -> str:

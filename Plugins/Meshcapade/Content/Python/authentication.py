@@ -100,11 +100,18 @@ class AuthManager:
     def stop_automatic_refresh(self):
         self._stop_event.set()
 
-    def is_logged_in(self):
+    def is_token_valid(self):
         return (
             bool(self.tokens)
             and time.time() < self.tokens["issued_at"] + self.tokens["expires_in"]
         )
+
+    def is_logged_in(self):
+        try:
+            user_info = self.get_user_info()
+            return bool(self.user_info)
+        except:
+            return False
 
     def get_access_token(self):
         return self.tokens.get("access_token") if self.tokens else None
@@ -247,7 +254,7 @@ class AuthManager:
         self.auth_succeded = None
 
     def get_user_info(self) -> UserInfo:
-        if not self.is_logged_in():
+        if not self.is_token_valid():
             raise RuntimeError(
                 "🔒 Cannot fetch user info: not authenticated or token expired."
             )
@@ -258,10 +265,10 @@ class AuthManager:
             response = self.authorized_request("GET", userinfo_url)
             response.raise_for_status()
             self.user_info = response.json()
-            self.logger.info(self.user_info)
+            self.logger.debug(self.user_info)
             return self.user_info
         except requests.RequestException as e:
-            self.logger.error(f"❌ Failed to get user info: {e}")
+            self.logger.debug(f"❌ Failed to get user info: {e}")
             raise
 
     def _run_local_auth_server(self):
@@ -392,7 +399,7 @@ class AuthManager:
 
         # If token is invalid or expired, try refreshing once and retry the request
         if response.status_code == 401 and retry_when_invalid:
-            self.logger.warning()("⚠ Token expired or invalid, retrying once.")
+            self.logger.warning("⚠ Token expired or invalid, retrying once.")
             try:
                 self._refresh_tokens()
                 self.logger.debug("🔁 Tokens refreshed successfully.")
