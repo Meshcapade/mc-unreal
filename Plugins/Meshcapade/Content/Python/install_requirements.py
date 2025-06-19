@@ -1,10 +1,11 @@
-﻿import logging
+﻿from logger.mcme_logger import logger
 import os
 import platform
 import sys
 import subprocess
 import site
 import importlib
+import sysconfig
 
 
 #find Unreal’s own site‑packages
@@ -49,9 +50,9 @@ def install_requirements():
             "--target", ue_sitepackages,
             "-r", requirements_path
         ])
-        logging.info("✅ Installed requirements")
+        logger.info("✅ Installed requirements")
     except Exception as e:
-        logging.error(f"❌ Failed to install requirements: {e}")
+        logger.error(f"❌ Failed to install requirements: {e}")
 
 def refresh_imports():
     """Invalidate caches so the running interpreter will see the new files."""
