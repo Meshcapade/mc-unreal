@@ -3,6 +3,18 @@ import os
 import platform
 import sys
 import subprocess
+import site
+import importlib
+
+
+#find Unreal’s own site‑packages
+try:
+    ue_sitepackages = site.getsitepackages()[0]
+except AttributeError:
+    ue_sitepackages = sysconfig.get_paths()["purelib"]
+
+print("Installing into Unreal site‑packages at ",ue_sitepackages)
+
 
 
 def get_python_path():
@@ -24,13 +36,29 @@ def get_python_path():
 def install_requirements():
     requirements_path = os.path.join(os.path.dirname(__file__), "requirements.txt")
     python_exec_path = get_python_path()
+  
     try:
+        #to make sure we are using pip from the unreal side and not the system pip
         subprocess.check_call(
-            [python_exec_path, "-m", "pip", "install", "-r", requirements_path]
-        )
+            [python_exec_path, "-m", "ensurepip"]
+        ) 
+        subprocess.check_call([
+            python_exec_path,
+            "-m", "pip", "install",
+            "--upgrade",
+            "--target", ue_sitepackages,
+            "-r", requirements_path
+        ])
         logging.info("✅ Installed requirements")
     except Exception as e:
         logging.error(f"❌ Failed to install requirements: {e}")
 
+def refresh_imports():
+    """Invalidate caches so the running interpreter will see the new files."""
+    importlib.invalidate_caches()
+
 
 install_requirements()
+refresh_imports()
+
+
