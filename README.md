@@ -1,4 +1,4 @@
-﻿# Meshcapade Unreal Plugin (5.3)
+﻿# Meshcapade Unreal Plugin (5.4)
 
 ### Plugin Releases
 
@@ -11,7 +11,7 @@
 
 This plugin allows you to access motions created on the [Meshcapade.me](https://me.meshcapade.com/) platform and quickly retarget them onto your own characters in [Unreal Engine 5](https://www.Unrealengine.com/en-US/download). Bodies created on the Meshcapade platform use [SMPL](https://smpl.is.tue.mpg.de/) core technology and are referred to as [SMPL-bodies](https://smpl.is.tue.mpg.de/license.html).  
 
-📝 This guide is for Unreal Engine version 5.3. It may or may not work with earlier or later versions. We’ve developed specific plugins and READMEs for the versions listed in the table above.
+📝 This guide is for Unreal Engine version 5.4. It may or may not work with earlier or later versions. We’ve developed specific plugins and READMEs for the versions listed in the table above.
 
 <details open>
 <summary>I. Adding the plugin to your Unreal project</summary>
@@ -148,59 +148,46 @@ For the sake of retargeting, set the skeleton to `SK_Meshcapade_fbx`. If it's no
 
 The process of transferring animation from one character to another is called retargeting. 
 
-To retarget motion from the SMPL-body to your own character, you’ll need a retargeter. Retargeters require two IK rigs: one for the SMPL-body and one for your target character. The Meshcapade plugin includes a sample retargeter for the Unreal mannequin, with corresponding IK rigs for both the mannequin and the SMPL-body.
+One thing you may want to do is retarget the motion from the SMPL-body onto the body of your character.  
 
-There are separate retargeters for `.GLB` and `.FBX` formats. If you already have a retargeter from the Unreal mannequin to your character, you can chain retargeting through that. If not, you can create your own using our assets as a base.
+### A. Auto Retargeting
 
-### A. Retargeting animation
+As of 5.4, this process has been massively simplified.  Just find your animation, right click on it, and choose `Retarget Animations`.
 
-Right-click on an animation asset (with a green bar) and choose `Retarget Animation Assets > Duplicate and Retarget Animation Assets/Blueprints`.
+![retarget06.png](images/readme_retarget06.png)
 
-![retarget4](images/readme_retarget04.png)
+Assign the character to which you'd like to transfer the animation to the `Target Skeletal Mesh`.  Choose the animation(s) you want to retarget, and then click `Export Animations`.
 
-Select the appropriate retargeter:
-- For `.GLB`: `RTG_Meshcapade_to_ue5_glb`
-- For `.FBX`: `RTG_Meshcapade_to_ue5_fbx`
+![retarget07.png](images/readme_retarget07.png)
 
-![retareget5](images/readme_retarget05.png)
+If the animation looks the way you want it to, then you can skip to [editing the animation](#editing)
 
-This will generate a new animation asset retargeted to your character.
+### B. Editing the Retargeter
+
+If the animation isn't exactly the way you'd like it, you can adjust the retargeter.  By default `Auto Generate Retargeter` is checked.  We can mofidy the retargeting assets to make them exactly what we want them to be.
+
+In the `Retarget Animations` menu, choose `Export Retarget Assets` 
+![retarget08.png](images/readme_retarget08.png)
+
+Open the newly generated retargeting asset.
+![retarget09.png](images/readme_retarget09.png)
+
+To adjust the retargeter, click the 3 dots next to `Running Retarget`, and select `Edit Retarget Pose`.
+![retarget10.png](images/readme_retarget10.png)
+
+You can see that on the automatic retargeter the spine and one of the arms need to be fixed.  Select the bone you want to fix, press `e` to enter rotation mode, and then manually correct the rotation.  
+![retarget01.gif](images/readme_retarget00.gif)
+
+Right click on your animation again, and choose `Retarget Animations`.  But this time, uncheck `Auto Generate Retargeter` and set the retargeter to the one you corrected.  Repeat the process of editing the retargeter and testing it until it's the way you want it.  The exact issues you face with the automatically generated retargeter will vary depending on your specific character. 
+![retarget11.png](images/readme_retarget11.png)
+
+Here's an example of the retargeted animation on a custom character next to the original animation.
 
 [![Retargeting Example](images/readme_preview_retargetingexample.png)](https://youtu.be/dDYhbGmUmCA "Retarget Example")
 
-### B. Making your own IK rig
-
-To create an IK rig for your character:
-- Ensure `Show Plugin Content` is enabled in Content Browser settings.
-- Navigate to `Plugins > Meshcapade Content > Rigs` and duplicate `IK_Mannequin`.
-
-![ik rig0](images/readme_ikrig00.png)
-
-If your character follows the UE5 skeleton convention, just set the preview mesh. For UE4 characters, you may need to change the `End Bone` of the spine IK chain to `spine_03`.
-
-![ik rig1](images/readme_ikrig01.png)
-
-See the [Unreal documentation](https://docs.Unrealengine.com/5.3/en-US/ik-rig-animation-retargeting-in-Unreal-engine/) for more info.
-
-### C. Making your own retargeter
-
-Once the IK rig is ready, create a retargeter via `Animation > Retargeting > IK Retargeter`.
-
-Set the source and target IK rigs in the Details panel.
-
-![retarget0](images/readme_retarget00.png)
-
-Switch to `Edit Retarget Pose` mode to align the skeleton poses.
-
-![retarget1](images/readme_retarget01.png)
-
-Then click `Auto-Map Chains > Map All (Exact)`.
-
-![retarget2](images/readme_retarget02.png)
-
 </details>
 
-<details>
+<details id='editing'>
 <summary>VI. Editing the animation</summary>
 
 If your animation doesn't look right, you have two main options:
